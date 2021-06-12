@@ -68,10 +68,6 @@
       align-items: center;
       z-index: 9999;
 
-      :global(*) {
-        outline:none;
-      }
-      
       .btn {
         border: 0.5rem solid rgba(255,255,255,.1);
         background: transparent;
@@ -107,7 +103,10 @@
         animation: title-swell 2s ease-in-out 1s infinite;
         align-items: flex-end;
         justify-content: flex-end;
-
+        border: transparent;
+        outline: none;
+        text-shadow: 2px 2px 1rem rgba(0,0,0,0.5);
+        
         span:nth-child(odd) {
           color: #9ebdd4;
         }
