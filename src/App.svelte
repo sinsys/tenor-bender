@@ -113,6 +113,15 @@
     }
   }
 
+  @keyframes ghost-hover {
+    0%, 100% {
+      margin-top: 0
+    }
+    50% {
+      margin-top: 2rem;
+    }
+  }
+
   .app_wrapper {
     display: flex;
     flex-direction: column;
@@ -131,14 +140,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: auto;
+        height: 100%;
 
         .title {
           position: relative;
           display: flex;
           text-align: center;
-          margin: 0 1rem;
           font-size: 17.5vw;
+          animation: swell 4s  -.125s infinite;
+
           @media only screen and (min-width: 600px) {
             font-size: 4rem;
           }
