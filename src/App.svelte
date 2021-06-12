@@ -3,7 +3,7 @@
 	import { Router, Route } from "svelte-navigator";
   import Intro from "./routes/Intro.svelte";
 	import Game from "./routes/Game.svelte";
-  
+
   import Footer from './components/Footer.svelte'
   import Sandbox from "./Sandbox.svelte";
 </script>
@@ -30,7 +30,7 @@
     padding: 0;
     font-size: 16px;
     color: #FEFEFE;
-    text-shadow: 2px 2px 3px #131313;
+    text-shadow: 2px 2px 8px #131313;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +40,14 @@
     background: linear-gradient(to top, #2c3e50, #2980b9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: $abel;
     overflow: hidden;
+  }
+
+  :global(div) {
+    outline-style:none;
+  }
+  
+  :global(*,*:focus,*:hover) {
+    outline:none;
   }
 
   .app_wrapper {

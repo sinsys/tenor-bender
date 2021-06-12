@@ -9,12 +9,13 @@
 
   onMount(() => {
     init = true;
+    document.activeElement.blur();
   });
 
   onDestroy(() => {
     init = false;
     visible = false;
-  })
+  });
 </script>
 
 <!-- DOM -->
@@ -75,15 +76,14 @@
         border-radius: 1rem;
         font-size: 2rem;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
 
         &:hover {
           background: rgba(255,255,255,0.3);
           border: 0.5rem solid rgba(255,255,255,0.5)
         }
         > :global(a) {
-            text-decoration: none;
-            color: #FEFEFE;
+          text-decoration: none;
+          color: #FEFEFE;
         }
       }
     }
@@ -93,14 +93,16 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      height: 100%;
-      
+
       .title {
         position: relative;
         display: flex;
         text-align: center;
         font-size: 4rem;
-        animation: fade-in 500 1, title-swell 1s ease-in-out infinite;
+        margin-top: 1rem;
+        animation: title-swell 2s ease-in-out 1s infinite;
+        align-items: flex-end;
+        justify-content: flex-end;
 
         span:nth-child(odd) {
           color: #9ebdd4;
@@ -124,7 +126,7 @@
             transform: translate3d(0,0,0);
           }
           50% {
-            transform: translate3d(0,0.5rem,0);
+            transform: translate3d(0,1rem,0);
           }
         }
 
@@ -168,6 +170,7 @@
           left: -6rem;
           animation-delay: 0.0s;
         }
+
         span:nth-child(2) {
           left: -3rem;
           animation-delay: 0.2s;
@@ -191,7 +194,7 @@
 
       @keyframes audio-wave {
         0% {height: 0.5rem; transform: translateY(0), translateX(1rem); background:#9b59b6;}
-        25% {height: 8.0rem; transform: translateY(2rem); background:#3498db;}
+        25% {height: 8.0rem; transform: translateY(-.75rem); background:#3498db;}
         50% {height: 0.5rem; transform: translateY(0); background:#9b59b6;}
         100% {height: 0.5rem; transform: translateY(0); background:#9b59b6;}
       }
