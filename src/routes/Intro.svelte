@@ -68,6 +68,10 @@
       align-items: center;
       z-index: 9999;
 
+      :global(*) {
+        outline:none;
+      }
+      
       .btn {
         border: 0.5rem solid rgba(255,255,255,.1);
         background: transparent;

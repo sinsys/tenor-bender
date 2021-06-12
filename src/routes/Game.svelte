@@ -6,7 +6,7 @@
 <PageTransition>
   <div class="game_wrapper">
     <div class="button_wrapper">
-      <div class="btn start-btn">
+      <div class="btn back-btn">
         <Link to="/">	
           &#10094;&nbsp;back
         </Link>
@@ -29,8 +29,8 @@
 
     .button_wrapper {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 2rem;
+      left: 1rem;
       justify-content: center;
       align-items: center;
       z-index: 9999;
@@ -48,16 +48,17 @@
         justify-content: center;
         align-items: center;
 
-        &.start-btn {
+        &.back-btn {
           position: absolute;
         }
+
         &:hover {
           background: rgba(255,255,255,0.3);
           border: 0.5rem solid rgba(255,255,255,0.5)
         }
         > :global(a) {
-            text-decoration: none;
-            color: #FEFEFE;
+          text-decoration: none;
+          color: #FEFEFE;
         }
       }
     }
