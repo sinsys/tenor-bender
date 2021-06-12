@@ -30,7 +30,6 @@
     padding: 0;
     font-size: 16px;
     color: #FEFEFE;
-    text-shadow: 2px 2px 8px #131313;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,10 +43,6 @@
 
   :global(div) {
     outline-style:none;
-  }
-  
-  :global(*,*:focus,*:hover) {
-    outline:none;
   }
 
   .app_wrapper {
