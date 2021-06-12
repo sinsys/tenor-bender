@@ -45,6 +45,11 @@
   :global(div) {
     outline-style:none;
   }
+  
+  :global(*,*:focus,*:hover) {
+    outline:none;
+  }
+
   .app_wrapper {
     display: flex;
     flex-direction: column;
