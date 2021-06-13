@@ -6,17 +6,28 @@
 <PageTransition>
   <div class="game_wrapper">
     <div class="button_wrapper">
-      <div class="btn back-btn">
-        <Link to="/">	
+      <Link to="/">
+        <div class="btn back-btn">
           &#10094;&nbsp;back
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
     <canvas id="viewport"></canvas>
   </div>
 </PageTransition>
 
 <style lang="scss">
+  @import '../styles/global';
+  #viewport {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #131313;
+  }
   .game_wrapper {
     width: 100vw;
     height: 100vh;
@@ -35,30 +46,21 @@
       align-items: center;
       z-index: 9999;
 
-      .btn {
-        border: 0.5rem solid rgba(255,255,255,.1);
-        background: transparent;
-        padding: 0.75rem 2rem;
-        margin: 0.5rem;
-        border-radius: 1rem;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      > :global(a) {
+        text-decoration: none;
+        color: #FEFEFE;
+      }
 
+      .btn {
+        @include btnBase;
+        @include btnBorderTransparent;
         &.back-btn {
           position: absolute;
         }
 
         &:hover {
           background: rgba(255,255,255,0.3);
-          border: 0.5rem solid rgba(255,255,255,0.5)
-        }
-        > :global(a) {
-          text-decoration: none;
-          color: #FEFEFE;
+          @include btnBorderActive;
         }
       }
     }

@@ -1,19 +1,21 @@
-<div class="ocean">
+<script type="ts">
+  import { fly } from 'svelte/transition'
+  import { cubicInOut } from 'svelte/easing'
+</script>
+
+<div class="ocean" out:fly="{{ y: 200, duration: 1000 }}">
   <div class="wave"></div>
   <div class="wave"></div>
 </div>
-<div class="footer">
+<div class="footer" out:fly="{{ y: 200, duration: 1000, easing: cubicInOut }}">
   &copy;&nbsp;2021 - Nicholas Hazel - All rights reserved.
 </div>
 
 <style type="scss">
-    $color-dark: #000;
-  $color-blue: rgb(100,255,255);
-  $color-glow: rgba(100,200,255,0.75);
-  $size: 50px;
+  @import '../styles/global.scss';
 
   .ocean { 
-    height: 5%;
+    height: 10vh;
     width:100%;
     position:absolute;
     bottom:0;

@@ -1,0 +1,15 @@
+@mixin btnBase {
+  padding: 0.75rem 2rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin btnBorderTransparent {
+  border: 0.5rem solid rgba(255,255,255,.1);
+}
+@mixin btnBorderActive {
+  border: 0.5rem solid rgba(255,255,255,1);
+}
