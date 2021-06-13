@@ -4,7 +4,6 @@
   import Intro from "./routes/Intro.svelte";
 	import Game from "./routes/Game.svelte";
 
-  import Footer from './components/Footer.svelte'
   import Sandbox from "./Sandbox.svelte";
 </script>
 
@@ -18,13 +17,11 @@
     </Route>
     <Route path="sandbox" component={Sandbox} />
 	</div>
-  <Footer />
 </Router>
 
 <style lang="scss">
-  // FONTS
-  $abel: 'Abel', sans-serif;
-  $mulish: 'Mulish', sans-serif;
+  @import './styles/global';
+
   :global(html, body) {
     margin: 0;
     padding: 0;

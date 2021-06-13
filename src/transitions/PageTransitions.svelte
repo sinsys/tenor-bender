@@ -1,6 +1,6 @@
 <script>
 	import { cubicInOut } from 'svelte/easing'
-	let duration = 400
+	let duration = 1000
 	let delay = duration
 
 	const transitionIn = () => ({
@@ -30,5 +30,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		overflow: hidden;
 	}
 </style>
