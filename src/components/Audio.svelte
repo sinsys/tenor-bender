@@ -1,6 +1,5 @@
 <script type="ts">
   import { onMount } from 'svelte'
-
   let audio: HTMLAudioElement
   let canvas: HTMLCanvasElement
 
@@ -16,47 +15,54 @@
   let bar_pos: number
   let bar_width: number
   let bar_height: number
-
   let invited: boolean = false
   let wH:number = window.innerHeight
   let wW:number = window.innerWidth
-
   const start = (): void => {
     invited = true;
     context.resume();
     audio.play();
   }
-
   const FrameLooper = (): void => {
     fbc_array = new Uint8Array(analyser.frequencyBinCount)
-    bar_count = 128
+    bar_count = 16
     analyser.getByteFrequencyData(fbc_array)
     ctx.clearRect(0, 0, wW, wH || 0)
-    for (var i = 0; i < bar_count; i++) {
-      if (fbc_array[i] < 51) {
-        ctx.fillStyle = "#94000A"
-      } else if (fbc_array[i] < 102) {
-        ctx.fillStyle = "#FF940E"
-      } else if (fbc_array[i] < 153) {
-        ctx.fillStyle = "#FFD82B"
-      } else if (fbc_array[i] < 204) {
-        ctx.fillStyle = "#D1FFE2"
-      } else {
-        ctx.fillStyle = "#ffffff"
+
+    // Calculate bar heights
+    let bars = []
+    for (let i = 0; i < bar_count; i++) {
+      let chunkSize = Math.floor(fbc_array.length / bar_count)
+      let chunk = fbc_array.slice(chunkSize * i, chunkSize * i + chunkSize)
+      bars.push(chunk.reduce((acc, i) => acc += i, 0) / chunk.length)
+    }
+    for (var bar = 1; bar < bars.length + 1; bar++) {
+      const barFreq = bars[bar]
+      if (barFreq < 30) {
+        continue;
       }
+      if (barFreq < 75) {
+        ctx.globalAlpha = 0.3
+        ctx.fillStyle = "9999FF"
+      } else if (barFreq < 150) {
+        ctx.globalAlpha = 1
+        ctx.fillStyle = "#3498db"
+      } else {
+        ctx.globalAlpha = 0.3
+        ctx.fillStyle = "CCCCFF"
+      }
+      bar_height = (-(wH / 256) * barFreq) * 2
+
       // Offsetting 1 pixel each side
-      bar_pos = i * wW / bar_count + 1
+      bar_pos = bar * wW / bar_count + 1
       bar_width = (wH / bar_count) + 2
       
-      bar_height = -(fbc_array[i] * (wH / 256))
-      ctx.fillRect(bar_pos, canvas.height, bar_width, bar_height)
+      ctx.fillRect(bar_pos, canvas?.height || 0, bar_width, bar_height)
     }
-
     setTimeout(() => {
       FrameLooper();
-    }, 20);
+    }, 10);
   }
-
   onMount(() => {
     /* SETUP */
     // Audio config
@@ -64,11 +70,9 @@
     audio.controls = true
     audio.loop = false
     audio.autoplay = false
-
     context = new AudioContext()
     analyser = context.createAnalyser()
     source = context.createMediaElementSource(audio)
-
     // Canvas
     ctx = canvas.getContext('2d');
     
@@ -77,7 +81,6 @@
     source.connect(analyser)
 		canvas.width = window.innerWidth
 		canvas.height = window.innerHeight
-
     let frame = requestAnimationFrame(FrameLooper);
 		return () => {
 			cancelAnimationFrame(frame)
@@ -109,6 +112,6 @@
     right: 0;
     bottom: 0;
     background: #131313;
-    z-index: 0;
+    z-index: 999;
   }
 </style>
