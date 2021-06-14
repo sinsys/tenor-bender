@@ -1,13 +1,19 @@
 <script type="ts">
   import { fly } from 'svelte/transition'
   import { cubicInOut } from 'svelte/easing'
+  import { config } from '../stores/app'
+  const flyOut = {
+    y: 200,
+    easing: cubicInOut,
+    duration: config.pageTransitionDuration
+  }
 </script>
 
-<div class="ocean" out:fly="{{ y: 200, duration: 1000 }}">
+<div class="ocean" out:fly="{flyOut}">
   <div class="wave"></div>
   <div class="wave"></div>
 </div>
-<div class="footer" out:fly="{{ y: 200, duration: 1000, easing: cubicInOut }}">
+<div class="footer" out:fly="{flyOut}">
   &copy;&nbsp;2021 - Nicholas Hazel - All rights reserved.
 </div>
 

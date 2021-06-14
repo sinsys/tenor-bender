@@ -1,5 +1,6 @@
 <script type="ts">
   import PageTransition from '../transitions/PageTransitions.svelte'
+  import Audio from '../components/Audio.svelte'
   import { Link } from "svelte-navigator";
 </script>
 
@@ -12,7 +13,7 @@
         </div>
       </Link>
     </div>
-    <canvas id="viewport"></canvas>
+    <Audio></Audio>
   </div>
 </PageTransition>
 

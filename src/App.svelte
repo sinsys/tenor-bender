@@ -1,10 +1,10 @@
 <!-- SCRIPTS -->
 <script lang="ts">
-	import { Router, Route } from "svelte-navigator";
-  import Intro from "./routes/Intro.svelte";
-	import Game from "./routes/Game.svelte";
-
-  import Sandbox from "./Sandbox.svelte";
+	import { Router, Route } from "svelte-navigator"
+  import Intro from "./routes/Intro.svelte"
+	import Game from "./routes/Game.svelte"
+  import Sandbox from "./Sandbox.svelte"
+  const name = 'Tenor Bender'
 </script>
 
 <Router>
