@@ -18,11 +18,13 @@
   let invited: boolean = false
   let wH:number = window.innerHeight
   let wW:number = window.innerWidth
+
   const start = (): void => {
     invited = true;
     context.resume();
     audio.play();
   }
+
   const FrameLooper = (): void => {
     fbc_array = new Uint8Array(analyser.frequencyBinCount)
     bar_count = 16
@@ -66,7 +68,7 @@
     /* SETUP */
     // Audio config
     audio.src = '/assets/sample2.mp3'
-    audio.controls = true
+    audio.controls = false
     audio.loop = false
     audio.autoplay = false
     context = new AudioContext()
