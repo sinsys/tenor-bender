@@ -51,11 +51,10 @@
         ctx.globalAlpha = 0.3
         ctx.fillStyle = "CCCCFF"
       }
-      bar_height = (-(wH / 256) * barFreq) * 2
+      bar_height = (-(wH / 256) * barFreq) * 1.6
+      bar_width = (wH / bar_count)
+      bar_pos = (bar * wW / bar_count) - (bar_width / 2)
 
-      // Offsetting 1 pixel each side
-      bar_pos = bar * wW / bar_count + 1
-      bar_width = (wH / bar_count) + 2
       
       ctx.fillRect(bar_pos, canvas?.height || 0, bar_width, bar_height)
     }
@@ -66,7 +65,7 @@
   onMount(() => {
     /* SETUP */
     // Audio config
-    audio.src = '/assets/sample.mp3'
+    audio.src = '/assets/sample2.mp3'
     audio.controls = true
     audio.loop = false
     audio.autoplay = false
