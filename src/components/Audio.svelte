@@ -78,8 +78,8 @@
     for (var bar = 1; bar < bars.length + 1; bar++) {
       const barFreq = bars[bar - 1]
       let bar_height = (-(wH / 256) * barFreq) * 1.5,
-        bar_width = (wW / bar_count) - 6,
-        bar_pos = (bar * wW / bar_count) - (bar_width / 2) + 3
+        bar_width = (wW / bar_count) - 4,
+        bar_pos = (bar * wW / bar_count) - (bar_width / 2)
       if (barFreq < 40) {
         ctx.globalAlpha = 0.3
         ctx.fillStyle = "#9999FF"
